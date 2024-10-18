@@ -1,14 +1,22 @@
 import products from "./products.json";
 
 class Product {
+  
   constructor(name: string, price: number) {
     this.name = name;
     this.price = price;
   }
-  id: number;
-  name: string;
-  price: number;
-}
+
+  static findProductsBelow (price:number) {
+const nuevoArray = products.filter(p=>{
+  return p.price < price 
+})
+return nuevoArray;
+  }
+ id : number;
+ name: string;
+ price : number;
+} 
 
 class User {
   constructor(name: string) {
@@ -21,7 +29,8 @@ class User {
   }
   addProducts(newProducts: Product[]) {
     // esto no funciona:
-    this.products.push(newProducts);
+    this.products = this.products.concat (newProducts);  //concat es la forma que se le agregan nuevos items a un array
+
     // pista: push no suma muchos items (agrega de a uno)
   }
 }
